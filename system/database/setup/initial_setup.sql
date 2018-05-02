@@ -30,15 +30,15 @@ CREATE TABLE IF NOT EXISTS users (
   `City` varchar(64) DEFAULT NULL,
   `Province` varchar(64) DEFAULT NULL,
   `Postal` varchar(16) DEFAULT NULL,
-  `AccountType` char(1) DEFAULT,
+  `AccountType` char(1) DEFAULT NULL,
   `LastLoginDt` timestamp DEFAULT '0000-00-00 00:00:00',
   `CreateDt` timestamp DEFAULT CURRENT_TIMESTAMP,
   `CreateBy` varchar(32) DEFAULT NULL,
-  `UpdateDt` timestamp '0000-00-00 00:00:00',
+  `UpdateDt` timestamp DEFAULT '0000-00-00 00:00:00',
   `UpdateBy` varchar(32) DEFAULT NULL,
-  PRIMARY KEY ('uid'),
+  PRIMARY KEY (`uid`),
   KEY `onEmail` (`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 INSERT INTO `users` (`uid`, `rid`, `email`, `password`) VALUES
 (1, 1, 'nic@285solutions.com', '6b7650c2bf078561af2489fb5dfbaf47');
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   PRIMARY KEY (`rid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
-INSERT INTO roles ('rid','Description') VALUES
+INSERT INTO roles (rid,Description) VALUES
 (1, 'Admin'),
 (2, 'User');
 
@@ -87,6 +87,6 @@ CREATE TABLE IF NOT EXISTS `rolodex` (
   `UpdateBy` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`roid`),
   KEY `on_uid` (`uid`),
-  key 'on_company' ('company'),
-  key 'on_lastname' ('lastname')
+  key `on_company` (`company`),
+  key `on_lastname` (`lastname`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
